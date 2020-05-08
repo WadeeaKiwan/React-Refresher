@@ -12,7 +12,10 @@ const App = () => {
   ]);
 
   const addNewGoalHandler = (newGoal) => {
-    setCourseGoals(courseGoals.concat(newGoal));
+    // No need to use functional form when we don't need the previous state
+    // setCourseGoals(courseGoals.concat(newGoal));
+    // Use functional form to update the state when updating depends on the previous state
+    setCourseGoals((prevCourseGoals) => prevCourseGoals.concat(newGoal));
   };
 
   return (
