@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 
+import Header from "./components/Header/Header";
 import GoalList from "./components/GoalList/GoalList";
 import NewGoal from "./components/NewGoal/NewGoal";
 import "./App.css";
 
-const App = () => {
-  const [courseGoals, setCourseGoals] = useState([
-    { id: "cg1", text: "Finish the Course" },
-    { id: "cg2", text: "Learn all about the Course Main Topic" },
-    { id: "cg3", text: "Help other students in the course Q&A" }
-  ]);
+import { Goal } from "./types";
 
-  const addNewGoalHandler = (newGoal) => {
+const DEFAULT_GOALS: Goal[] = [
+  { id: "cg1", text: "Finish the Course" },
+  { id: "cg2", text: "Learn all about the Course Main Topic" },
+  { id: "cg3", text: "Help other students in the course Q&A" }
+];
+
+const App = (): JSX.Element => {
+  const [courseGoals, setCourseGoals] = useState<Goal[]>(DEFAULT_GOALS);
+
+  const addNewGoalHandler = (newGoal: Goal) => {
     // No need to use functional form when we don't need the previous state
     // setCourseGoals(courseGoals.concat(newGoal));
     // Use functional form to update the state when updating depends on the previous state
@@ -19,11 +24,13 @@ const App = () => {
   };
 
   return (
-    <div className='course-goals'>
-      <h2>Course Goals</h2>
-      <NewGoal onAddGoal={addNewGoalHandler} />
-      <GoalList goals={courseGoals} />
-    </div>
+    <Fragment>
+      <Header />
+      <main>
+        <NewGoal onAddGoal={addNewGoalHandler} />
+        <GoalList goals={courseGoals} />
+      </main>
+    </Fragment>
   );
 };
 

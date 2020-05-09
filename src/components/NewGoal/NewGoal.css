@@ -1,4 +1,55 @@
 .new-goal {
-  margin: 2rem;
-  text-align: center;
+  width: 90%;
+  max-width: 40rem;
+  margin: 2rem auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.new-goal-form {
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.new-goal-form input {
+  font: inherit;
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  background: white;
+  padding: 0.3rem 0.25rem;
+}
+
+.new-goal-form input:focus {
+  outline: none;
+  background: #e7e7e7;
+  border-color: black;
+}
+
+.new-goal-form button {
+  font: inherit;
+  padding: 0.5rem 2rem;
+  background: #0028ab;
+  border: 1px solid #0028ab;
+  color: white;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.new-goal-form button:focus {
+  outline: none;
+}
+
+.new-goal-form button:hover,
+.new-goal-form button:active {
+  background: #234edc;
+  border-color: #234edc;
+}
+
+.new-goal-form button[disabled],
+.new-goal-form button:hover[disabled] {
+  cursor: default;
+  background: #839ffd;
+  border: 1px solid #839ffd;
 }
