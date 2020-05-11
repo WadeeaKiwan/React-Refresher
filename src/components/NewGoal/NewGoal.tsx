@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./NewGoal.css";
 
-import { Goal } from "../../types";
+type Props = Readonly<{
+  onAddGoal: (newGoal: Goal) => void;
+}>;
 
-const NewGoal = (props: { onAddGoal: Function }): JSX.Element => {
-  const [enteredText, setEnteredText] = useState<string>("");
-  const [disabled, setDisabled] = useState<boolean>(false);
+const NewGoal: React.FC<Props> = ({ onAddGoal }) => {
+  const [enteredText, setEnteredText] = useState("");
 
   const addGoalHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -17,7 +18,7 @@ const NewGoal = (props: { onAddGoal: Function }): JSX.Element => {
 
     setEnteredText("");
 
-    props.onAddGoal(newGoal);
+    onAddGoal(newGoal);
   };
 
   const textChangeHandler = (event: React.FormEvent<HTMLInputElement>) => {
@@ -29,7 +30,7 @@ const NewGoal = (props: { onAddGoal: Function }): JSX.Element => {
       <h2>Add a new Goal</h2>
       <form className='new-goal-form' onSubmit={addGoalHandler}>
         <input type='text' value={enteredText} onChange={textChangeHandler} />
-        <button type='submit' disabled={enteredText === "" ? !disabled : disabled}>
+        <button type='submit' disabled={enteredText === ""}>
           Add Goal
         </button>
       </form>

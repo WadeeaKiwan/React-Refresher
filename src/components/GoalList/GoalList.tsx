@@ -1,9 +1,11 @@
 import React from "react";
 import "./GoalList.css";
 
-import { Goal } from "../../types";
+type Props = Readonly<{
+  goals: Goal[];
+}>;
 
-const GoalList = ({ goals }: { goals: Goal[] }): JSX.Element => {
+const GoalList: React.FC<Props> = ({ goals }) => {
   return (
     <section className='goals'>
       <ul className='goal-list'>
