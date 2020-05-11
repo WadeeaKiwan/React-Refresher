@@ -5,22 +5,20 @@ import GoalList from "./components/GoalList/GoalList";
 import NewGoal from "./components/NewGoal/NewGoal";
 import "./App.css";
 
-import { Goal } from "./types";
-
 const DEFAULT_GOALS: Goal[] = [
   { id: "cg1", text: "Finish the Course" },
   { id: "cg2", text: "Learn all about the Course Main Topic" },
   { id: "cg3", text: "Help other students in the course Q&A" }
 ];
 
-const App = (): JSX.Element => {
-  const [courseGoals, setCourseGoals] = useState<Goal[]>(DEFAULT_GOALS);
+const App: React.FC = () => {
+  const [courseGoals, setCourseGoals] = useState(DEFAULT_GOALS);
 
   const addNewGoalHandler = (newGoal: Goal) => {
     // No need to use functional form when we don't need the previous state
-    // setCourseGoals(courseGoals.concat(newGoal));
+    setCourseGoals(courseGoals.concat(newGoal));
     // Use functional form to update the state when updating depends on the previous state
-    setCourseGoals((prevCourseGoals) => prevCourseGoals.concat(newGoal));
+    // setCourseGoals((prevCourseGoals) => prevCourseGoals.concat(newGoal));
   };
 
   return (

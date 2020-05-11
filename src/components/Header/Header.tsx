@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Header.css";
 
-const Header = (): JSX.Element => {
+const Header: React.FC = () => {
   return (
     <header className='header'>
       <h1>Course Goals</h1>
